@@ -16,7 +16,7 @@ const Product = () => {
   return (
     <div className="product-container">
       <Link to={"/admin/products/add_product"} className="button">
-        Add Product +
+        Add New Product
       </Link>
 
       <div className="table-container">

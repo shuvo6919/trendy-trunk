@@ -5,7 +5,6 @@ import { useLoaderData } from "react-router-dom";
 
 const ProductEdit = () => {
   const currentProduct = useLoaderData();
-  console.log(currentProduct);
   const { successAlert } = useContext(MainContext);
   const [topLevelCategory, setTopLevelCategory] = useState("Men");
   const [secondLevelCategory, setSecondLevelCategory] = useState("Clothing");
@@ -44,7 +43,7 @@ const ProductEdit = () => {
 
   const handleUpdateProduct = (e) => {
     e.preventDefault();
-    e.preventDefault();
+    console.log("clicked");
     const form = e.target;
     const title = form.title.value;
     const color = form.color.value;
@@ -71,6 +70,18 @@ const ProductEdit = () => {
       quality,
       size,
     };
+    fetch(`http://localhost:5000/product/${currentProduct._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        successAlert("Successfully updated");
+      });
   };
   return (
     <form onSubmit={handleUpdateProduct}>
@@ -80,7 +91,11 @@ const ProductEdit = () => {
           <h4>Top Level Category</h4>
           <select onChange={(e) => setTopLevelCategory(e.target.value)}>
             {topLevelCategories.map((item) => (
-              <option key={item} value={item}>
+              <option
+                key={item}
+                value={item}
+                defaultValue={currentProduct.topLevelCategory}
+              >
                 {item}
               </option>
             ))}
@@ -90,7 +105,11 @@ const ProductEdit = () => {
           <h4>Second Level Category</h4>
           <select onChange={(e) => setSecondLevelCategory(e.target.value)}>
             {secondLevelCategories.map((item) => (
-              <option key={item} value={item}>
+              <option
+                key={item}
+                value={item}
+                defaultValue={currentProduct.secondLevelCategory}
+              >
                 {item}
               </option>
             ))}
@@ -100,7 +119,11 @@ const ProductEdit = () => {
           <h4>Third Level Category</h4>
           <select onChange={(e) => setThirdLevelCategory(e.target.value)}>
             {thirdLevelCategories.map((item) => (
-              <option key={item} value={item}>
+              <option
+                key={item}
+                value={item}
+                defaultValue={currentProduct.thirdLevelCategory}
+              >
                 {item}
               </option>
             ))}
@@ -110,7 +133,11 @@ const ProductEdit = () => {
           <h4>Quality</h4>
           <select onChange={(e) => setQuality(e.target.value)}>
             {qualities.map((item) => (
-              <option key={item} value={item}>
+              <option
+                key={item}
+                value={item}
+                defaultValue={currentProduct.quality}
+              >
                 {item}
               </option>
             ))}
@@ -118,23 +145,38 @@ const ProductEdit = () => {
         </section>
         <section>
           <h4>Title</h4>
-          <input type="text" name="title" placeholder="Product title" />
+          <input
+            type="text"
+            name="title"
+            placeholder="Product title"
+            defaultValue={currentProduct.title}
+          />
         </section>
         <section>
           <h4>Color</h4>
-          <input type="text" name="color" placeholder="Product color" />
+          <input
+            type="text"
+            name="color"
+            placeholder="Product color"
+            defaultValue={currentProduct.color}
+          />
         </section>
         <section>
           <h4>Price</h4>
-          <input type="text" name="price" placeholder="Product price" />
+          <input
+            type="text"
+            name="price"
+            placeholder="Product price"
+            defaultValue={currentProduct.price}
+          />
         </section>
         <section>
           <h4>Discount</h4>
           <input
-            defaultValue={10}
             type="text"
             name="discount"
             placeholder="Product discount"
+            defaultValue={currentProduct.discount}
           />
         </section>
         <section>
@@ -143,11 +185,17 @@ const ProductEdit = () => {
             type="text"
             name="description"
             placeholder="Product description"
+            defaultValue={currentProduct.description}
           />
         </section>
         <section>
           <h4>Photo</h4>
-          <input type="text" name="photo" placeholder="Photo URL" />
+          <input
+            type="text"
+            name="photo"
+            placeholder="Photo URL"
+            defaultValue={currentProduct.photoURL}
+          />
         </section>
         <section className="size">
           <h4>Size</h4>
@@ -155,37 +203,37 @@ const ProductEdit = () => {
             <div>
               <p>S</p>
               <input
-                defaultValue={10}
                 type="text"
                 name="s"
                 placeholder="Quantity"
+                defaultValue={currentProduct.size.s}
               />
             </div>
             <div>
               <p>M</p>
               <input
-                defaultValue={10}
                 type="text"
                 name="m"
                 placeholder="Quantity"
+                defaultValue={currentProduct.size.m}
               />
             </div>
             <div>
               <p>L</p>
               <input
-                defaultValue={10}
                 type="text"
                 name="l"
                 placeholder="Quantity"
+                defaultValue={currentProduct.size.l}
               />
             </div>
             <div>
               <p>XL</p>
               <input
-                defaultValue={10}
                 type="text"
                 name="xl"
                 placeholder="Quantity"
+                defaultValue={currentProduct.size.xl}
               />
             </div>
           </div>

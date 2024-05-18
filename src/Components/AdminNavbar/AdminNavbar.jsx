@@ -10,9 +10,11 @@ import { MdDashboard } from "react-icons/md";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { MainContext } from "../../Provider/MainProvider";
 const AdminNavbar = () => {
+  const { showMenu, handleShowMenu } = useContext(MainContext);
+  console.log(showMenu);
   return (
-    <div className="admin-navbar">
-      <ul>
+    <div className={`admin-navbar ${showMenu ? "show-navbar" : ""}`}>
+      <ul onClick={handleShowMenu} className="large-device">
         <NavLink to={"/admin/dashboard"}>
           <li>
             <MdDashboard />
