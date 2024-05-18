@@ -1,0 +1,35 @@
+.admin-navbar {
+  /* border: 2px solid red; */
+  margin: 20px;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  ul {
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+    gap: 5px;
+
+    > .active {
+      background: var(--website-color);
+      border-radius: 5px;
+    }
+
+    li {
+      border-radius: 5px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+
+      svg {
+        color: #8e8e93;
+        font-size: 20px;
+      }
+    }
+    li:hover {
+      background: var(--website-color);
+    }
+  }
+}

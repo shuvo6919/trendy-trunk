@@ -1,0 +1,44 @@
+.header-container {
+  background: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* logo-container part----------------------------- */
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    img {
+      width: 50px;
+    }
+    h2 {
+      color: var(--website-color);
+    }
+  }
+  /* -------------------------------------------------------- */
+  .search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 300px;
+    svg {
+      color: var(--website-color);
+      font-size: 20px;
+    }
+    input {
+      border: 0;
+      padding: 10px;
+      border-radius: 10px;
+      width: 100%;
+      background: #f7f7f7;
+    }
+  }
+  /* -------------------------------------------------------- */
+  .notification {
+    svg {
+      color: #2f80ed;
+      font-size: 25px;
+    }
+  }
+}

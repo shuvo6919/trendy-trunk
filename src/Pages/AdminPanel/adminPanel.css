@@ -1,0 +1,13 @@
+.admin-body {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  /* ---------------------------------------------------------- */
+
+  /* ------------------------------------------------------------ */
+  .admin-content {
+    margin: 20px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+  }
+}
